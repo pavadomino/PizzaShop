@@ -1,0 +1,15 @@
+<h2>Available products:</h2>
+
+<div class="container text-center">
+  <div class="row">
+  <% @products.each do |product| %>
+    <div class="col">
+      <p><strong>Description:</strong> <%= product.description %> </p>
+      <img src="<%= product.path_to_image %>" alt=<%= product.title %>>
+      <p><strong>Size:</strong> <%= product.size %></p>
+      <p><strong>Price:</strong> <%= product.price %> ruble(s) </p>
+      <br/>
+    </div>
+  <% end %>
+  </div>
+</div>
