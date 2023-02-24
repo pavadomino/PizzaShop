@@ -4,12 +4,24 @@
   <div class="row">
   <% @products.each do |product| %>
     <div class="col-md-4">
-      <p><strong>Title:</strong> <%= product.title %> </p>
-      <img src="<%= product.path_to_image %>" alt=<%= product.title %>>
-      <p><strong>Description:</strong> <%= product.description %> </p>
-      <p><strong>Size:</strong> <%= product.size %></p>
-      <p><strong>Price:</strong> <%= product.price %> ruble(s) </p>
-      <br/>
+      <div>
+        <strong>Title:</strong> <%= product.title %> 
+      </div>
+      <div>
+        <img src="<%= product.path_to_image %>" alt=<%= product.title %>>
+      </div>
+      <div>
+        <strong>Description:</strong> <%= product.description %> 
+      </div>
+      <div>
+        <strong>Size:</strong> <%= product.size %>
+      </div>
+      <div>
+        <strong>Price:</strong> <%= product.price %> ruble(s) 
+      </div>
+      <div>
+        <button class="btn btn-sm btn-success">Add to cart</button>
+      </div>
     </div>
   <% end %>
   </div>
