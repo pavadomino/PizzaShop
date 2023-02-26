@@ -20,3 +20,7 @@ get '/products' do
   @products = Product.all
   erb :products
 end
+
+post '/cart' do
+  erb "Hello!"
+end
