@@ -14,6 +14,9 @@ class Order < ActiveRecord::Base
   validates :address, presence: true
 end
 
+before do
+end
+
 get '/' do
   erb :index
 end
@@ -58,11 +61,12 @@ post '/order' do
     erb '<h2>Your order was received!</h2>'
   else
     @error = @new_order.errors.full_messages.first
-    erb :cart
+    erb :index
   end
   #erb '<h2>Your order was received!</h2>'
 end
 
 get '/order_list' do
-  "Hello World"
+  @order_list = Order.all.order('created_at DESC')
+  erb :order_list
 end
