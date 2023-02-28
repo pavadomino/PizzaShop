@@ -26,30 +26,33 @@
     <% end %>
 
     <tr>
-      <td><strong>Sum:</strong></td>
-      <td><%= sum_price %> руб.</td>
-    </tr>
-    <tr>
       <td><strong>Quantity:</strong></td>
-      <td><%= qty %></td>
+      <td><%= qty %> pizza(s)</td>
     </tr>
+     <tr>
+      <td><strong>Sum:</strong></td>
+      <td><%= sum_price %> ruble(s)</td>
+    </tr>
+
 </table>
 
 <form action="/order" method="POST" role="form">
 
+  <input name="order[orders_input]" type="hidden" value="<%=@orders_input%>">
+  
   <div class="form-group">
     <label>Name:</label>
-    <input name="username" type="text" class="form-control" placeholder="Your naem" value="<%=@username%>">
+    <input name="order[name]" type="text" class="form-control" placeholder="Your name" value="<%=@name%>">
   </div>
 
   <div class="form-group">
-    <label>Phone</label>
-    <input name="phone" type="text" class="form-control" placeholder="Your phone" value="<%=@phone%>">
+    <label>Phone:</label>
+    <input name="order[phone]" type="text" class="form-control" placeholder="Your phone" value="<%=@phone%>">
   </div>
 
   <div class="form-group">
     <label>Address:</label>
-    <input name="datetime" type="text" class="form-control" placeholder="Delivery address" value="<%=@datetime%>">
+    <input name="order[address]" type="text" class="form-control" placeholder="Delivery address" value="<%=@address%>">
   </div>
 
   <button type="submit" class="btn btn-success">Submit order</button>

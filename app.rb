@@ -21,9 +21,13 @@ get '/products' do
   erb :products
 end
 
+get '/cart' do
+  erb :cart
+end
+
 post '/cart' do
-  orders_input = params[:orders]
-  @items = parse_orders(orders_input)
+  @orders_input = params[:orders]
+  @items = parse_orders(@orders_input)
   @items.each do |item|
     item[0] = Product.find(item[0])
   end
@@ -46,5 +50,9 @@ def parse_orders(orders_input)
 end
 
 post '/order' do
-  erb 'Your order was received'
+  erb '<h2>Your order was received!</h2>'
+end
+
+get '/order_list' do
+  "Hello World"
 end
