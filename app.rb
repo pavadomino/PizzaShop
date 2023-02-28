@@ -8,6 +8,12 @@ set :database, {adapter: "sqlite3", database: "pizzashop.db"}
 class Product < ActiveRecord::Base
 end
 
+class Order < ActiveRecord::Base
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :address, presence: true
+end
+
 get '/' do
   erb :index
 end
@@ -22,10 +28,6 @@ get '/products' do
 end
 
 get '/cart' do
-  erb :cart
-end
-
-post '/cart' do
   @orders_input = params[:orders]
   @items = parse_orders(@orders_input)
   @items.each do |item|
@@ -50,7 +52,15 @@ def parse_orders(orders_input)
 end
 
 post '/order' do
-  erb '<h2>Your order was received!</h2>'
+  @new_order = Order.new params[:order]
+  erb  @new_order.inspect
+  if @new_order.save
+    erb '<h2>Your order was received!</h2>'
+  else
+    @error = @new_order.errors.full_messages.first
+    erb :cart
+  end
+  #erb '<h2>Your order was received!</h2>'
 end
 
 get '/order_list' do
