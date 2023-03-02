@@ -30,7 +30,7 @@ get '/products' do
   erb :products
 end
 
-get '/cart' do
+post '/cart' do
   @orders_input = params[:orders]
   @items = parse_orders(@orders_input)
   @items.each do |item|
