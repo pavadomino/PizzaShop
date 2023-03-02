@@ -56,14 +56,12 @@ end
 
 post '/order' do
   @new_order = Order.new params[:order]
-  erb  @new_order.inspect
   if @new_order.save
-    erb '<h2>Your order was received!</h2>'
+    erb :order_confirmation #'<h2>Your order was received!</h2>'
   else
     @error = @new_order.errors.full_messages.first
     erb :index
   end
-  #erb '<h2>Your order was received!</h2>'
 end
 
 get '/order_list' do
