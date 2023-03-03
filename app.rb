@@ -31,6 +31,7 @@ get '/products' do
 end
 
 post '/cart' do
+  @new_order = Order.new
   @orders_input = params[:orders]
   @items = parse_orders(@orders_input)
 
