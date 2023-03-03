@@ -65,7 +65,7 @@ post '/order' do
     erb :order_confirmation #'<h2>Your order was received!</h2>'
   else
     @error = @new_order.errors.full_messages.first
-    erb :index
+    erb :products
   end
 end
 
