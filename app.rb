@@ -65,7 +65,17 @@ post '/order' do
     erb :order_confirmation #'<h2>Your order was received!</h2>'
   else
     @error = @new_order.errors.full_messages.first
-    erb :products
+    @orders_input = params[:order]['orders_input']
+    @items = parse_orders(@orders_input)
+
+    if @items.length == 0
+      return erb :empty_cart
+    end
+
+    @items.each do |item|
+      item[0] = Product.find(item[0])
+    end
+    erb :cart
   end
 end
 
